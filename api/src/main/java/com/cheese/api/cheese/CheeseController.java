@@ -30,8 +30,12 @@ public class CheeseController {
   }
 
   @GetMapping("{id}")
-  public Optional<Cheese> get(@PathVariable String id) {
-    return cheeseRepository.findById(id);
+  public Cheese get(@PathVariable Integer id) {
+    Optional<Cheese> cheese = cheeseRepository.findById(id);
+    if (!cheese.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cheese does not exist.");
+    }
+    return cheese.get();
   }
 
   @PostMapping
@@ -42,22 +46,29 @@ public class CheeseController {
     return cheeseRepository.saveAndFlush(cheese);
   }
 
-  @PutMapping
-  public Cheese update(@PathVariable String id, @RequestBody Cheese cheese) {
+  @PutMapping("{id}")
+  public Cheese update(@PathVariable Integer id, @RequestBody Cheese cheese) {
     // TODO add validation for attributes passed in are correct, otherwise return a
     // 400 Bad Request
-    Optional<Cheese> existingCheese = cheeseRepository.findById(id);
-
-    if (!existingCheese.isPresent()) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    if (id != cheese.getId()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id does not match.");
     }
 
-    BeanUtils.copyProperties(cheese, existingCheese, "id");
-    return cheeseRepository.saveAndFlush(existingCheese.get());
+    Optional<Cheese> existingCheese = cheeseRepository.findById(id);
+    if (!existingCheese.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cheese does not exist.");
+    }
+
+    Cheese updatedCheese = existingCheese.get();
+    BeanUtils.copyProperties(cheese, updatedCheese, "id");
+    return cheeseRepository.saveAndFlush(updatedCheese);
   }
 
   @DeleteMapping("{id}")
-  public void delete(@PathVariable String id) {
-    cheeseRepository.deleteById(id);
+  public void delete(@PathVariable Integer id) {
+    Optional<Cheese> cheese = cheeseRepository.findById(id);
+    if (cheese.isPresent()) {
+      cheeseRepository.deleteById(id);
+    }
   }
 }

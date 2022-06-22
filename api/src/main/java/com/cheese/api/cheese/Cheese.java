@@ -13,7 +13,7 @@ public class Cheese {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private String id;
+  private Integer id;
 
   /**
    * The name of the cheese
@@ -43,6 +43,10 @@ public class Cheese {
   // Constructors
   //
 
+  public Cheese() {
+
+  }
+
   /**
    * @param name         The name of the cheese
    * @param color        The color of the cheese
@@ -58,7 +62,7 @@ public class Cheese {
   // Getters & Setters
   //
 
-  public String getId() {
+  public Integer getId() {
     return this.id;
   }
 
