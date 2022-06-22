@@ -2,6 +2,7 @@ package com.cheese.api.cheese;
 
 import java.util.Optional;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,22 +18,26 @@ public class Cheese {
   /**
    * The name of the cheese
    */
+  @Column(nullable = false)
   private String name;
 
   /**
    * The color of the cheese
    */
+  @Column(nullable = false)
   private String color;
 
   /**
    * The price of the cheese per kilogram
    */
+  @Column(nullable = false)
   private Integer pricePerKilo;
 
   /**
    * A url to an image of the cheese
    */
-  private Optional<String> imageUrl;
+  @Column(nullable = true)
+  private String imageUrl;
 
   //
   // Constructors
@@ -82,11 +87,11 @@ public class Cheese {
   }
 
   public Optional<String> getImageUrl() {
-    return this.imageUrl;
+    return Optional.ofNullable(this.imageUrl);
   }
 
   public void setImageUrl(Optional<String> imageUrl) {
-    this.imageUrl = imageUrl;
+    this.imageUrl = imageUrl.orElse("");
   }
 
   //

@@ -29,8 +29,7 @@ public class CheeseController {
     return cheeseRepository.findAll();
   }
 
-  @GetMapping
-  @RequestMapping("{id}")
+  @GetMapping("{id}")
   public Optional<Cheese> get(@PathVariable String id) {
     return cheeseRepository.findById(id);
   }
@@ -57,8 +56,7 @@ public class CheeseController {
     return cheeseRepository.saveAndFlush(existingCheese.get());
   }
 
-  @DeleteMapping
-  @RequestMapping("{id}")
+  @DeleteMapping("{id}")
   public void delete(@PathVariable String id) {
     cheeseRepository.deleteById(id);
   }
