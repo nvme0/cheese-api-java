@@ -10,7 +10,7 @@ export interface CheeseModalProps {
 }
 
 const CheeseDialog = ({ onClose, cheese }: CheeseModalProps): ReactElement | null => {
-  const isEditing = !isNaN(Number(cheese?.id));
+  const isEditing = !!cheese && cheese.id > 0;
   return cheese ? (
     <Dialog open={true} onClose={onClose}>
       <Stack>

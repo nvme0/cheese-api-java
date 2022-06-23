@@ -8,7 +8,7 @@ export const createSchema = yup.object().shape({
 });
 
 export const updateSchema = yup.object().shape({
-  id: yup.string().uuid().required(),
+  id: yup.number().required(),
   name: yup.string().required(),
   imageUrl: yup.string(),
   color: yup.string().required(),
