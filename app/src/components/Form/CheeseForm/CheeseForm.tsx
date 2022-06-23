@@ -33,10 +33,10 @@ const CheeseForm = ({ initialValues, isEditing, onClose }: CheeseFormProps): Rea
   return (
     <FormikProvider value={formik}>
       <Stack spacing={2} sx={{ minWidth: 360 }}>
-        <FormikTextField label="name" {...formik.getFieldProps("name")} />
+        <FormikTextField label="Name" {...formik.getFieldProps("name")} />
         <FormikTextField label="Color" {...formik.getFieldProps("color")} />
         <FormikTextField label="Price Per Kilo (cents)" {...formik.getFieldProps("pricePerKilo")} />
-        <FormikTextField label="Image URl" {...formik.getFieldProps("imageUrl")} />
+        <FormikTextField label="Image URL" {...formik.getFieldProps("imageUrl")} />
       </Stack>
       <Stack paddingTop={3} alignItems="flex-end">
         <SaveButton isLoading={formik.isSubmitting} onClick={() => formik.handleSubmit()} />
