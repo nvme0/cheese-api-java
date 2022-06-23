@@ -21,7 +21,9 @@ public class ApiApplication {
 	public OpenAPI customOpenAPI() {
 		OpenAPI openapi = new OpenAPI()
 				.components(new Components())
-				.info(new Info().title("Cheese API"));
+				.info(new Info()
+						.title("Cheese API")
+						.version("0.0.0"));
 
 		return openapi;
 	}

@@ -12,7 +12,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "eslint": "eslint src -c .eslintrc.js --ext js,jsx,ts,tsx",
     "eslint:fix": "eslint src -c .eslintrc.js --ext js,jsx,ts,tsx --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "gen-api-client": "sh ./scripts/gen-api-client.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -40,6 +41,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@babel/register": "^7.12.1",
     "@hot-loader/react-dom": "^16.8.5",
+    "@openapitools/openapi-generator-cli": "^2.5.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.8.3",
