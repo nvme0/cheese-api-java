@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS cheese (
+  id SERIAL PRIMARY KEY,
+  color VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  price_per_kilo INTEGER NOT NULL,
+  image_url VARCHAR(255)
+);
