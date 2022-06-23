@@ -10,6 +10,8 @@
 
 2. Depending on your IDE, start the Cheese API server in `/api`
 
+3. Go to the `README.md` file in `/app` for instructions on setting up the frontend
+
 ## Swagger UI
 
 To view Swagger UI, start the API server and go to `http://localhost:8080/swagger-ui/index.html`.
