@@ -6,6 +6,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { SnackbarUtilsConfigurator } from "@utils/SnackbarUtils";
 import theme from "@app/theme";
+import Home from "@pages/Home";
 
 import "./styles.scss";
 
@@ -28,7 +29,7 @@ const App = () => {
           <Router>
             <Switch>
               <Route exact path="/">
-                Hello World!
+                <Home />
               </Route>
             </Switch>
           </Router>
