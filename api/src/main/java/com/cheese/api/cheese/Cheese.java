@@ -8,29 +8,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity(name = "cheese")
 public class Cheese {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(required = true)
   private Integer id;
 
   /**
    * The name of the cheese
    */
   @Column(nullable = false)
+  @Schema(required = true)
   private String name;
 
   /**
    * The color of the cheese
    */
   @Column(nullable = false)
+  @Schema(required = true)
   private String color;
 
   /**
    * The price of the cheese per kilogram
    */
   @Column(nullable = false)
+  @Schema(required = true)
   private Integer pricePerKilo;
 
   /**
