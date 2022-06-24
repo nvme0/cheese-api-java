@@ -45,6 +45,12 @@ public class Cheese {
   @Column(nullable = true)
   private String imageUrl;
 
+  /**
+   * A description of the cheese
+   */
+  @Column(nullable = true)
+  private String description;
+
   //
   // Constructors
   //
@@ -104,6 +110,14 @@ public class Cheese {
     this.imageUrl = imageUrl.orElse("");
   }
 
+  public String getDescription() {
+    return this.description;
+  }
+
+  public void setDescription(Optional<String> description) {
+    this.description = description.orElse("");
+  }
+
   //
   // Builder Methods
   //
@@ -125,6 +139,11 @@ public class Cheese {
 
   public Cheese imageUrl(Optional<String> imageUrl) {
     setImageUrl(imageUrl);
+    return this;
+  }
+
+  public Cheese description(Optional<String> description) {
+    setDescription(description);
     return this;
   }
 }
